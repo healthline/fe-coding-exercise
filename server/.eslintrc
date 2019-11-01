@@ -1,0 +1,21 @@
+{
+  "parser": "babel-eslint",
+  "parserOptions": {
+    "sourceType": "script",
+    "ecmaFeatures": {
+      "experimentalObjectRestSpread": false,
+      "jsx": false,
+      "modules": false
+    }
+  },
+  "rules": {
+    "comma-dangle": ["error", {
+      "arrays": "always-multiline",
+      "objects": "always-multiline",
+      "imports": "always-multiline",
+      "exports": "always-multiline",
+      "functions": "never",
+    }],
+    "strict": ["error", "global"]
+  }
+}

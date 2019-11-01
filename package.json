@@ -1,0 +1,130 @@
+{
+  "name": "frontend",
+  "version": "1.11.25",
+  "private": true,
+  "dependencies": {
+    "@kpdecker/next": "^4.3.0",
+    "emotion": "^8.0.4",
+    "emotion-server": "^8.0.4",
+    "facepaint": "^1.2.1",
+    "good": "^7.2.0",
+    "good-console": "^6",
+    "hapi": "^16.5.0",
+    "isomorphic-unfetch": "^2.0.0",
+    "prop-types": "^15.5.10",
+    "qs": "^6.5.1",
+    "raven": "^2.4.2",
+    "react": "^16.3.2",
+    "react-dom": "^16.2.0",
+    "react-emotion": "^8.0.4",
+    "recompose": "^0.26.0",
+    "stylis": "^3.4.10",
+    "titlecase": "^1.1.2",
+    "useragent": "^2.2.1"
+  },
+  "devDependencies": {
+    "@percy-io/in-percy": "^0.1.9",
+    "@percy-io/percy-storybook": "^1.2.7",
+    "@storybook/addon-actions": "^3.3.13",
+    "@storybook/addon-links": "^3.3.13",
+    "@storybook/addon-options": "^3.3.13",
+    "@storybook/addons": "^3.3.13",
+    "@storybook/react": "^3.3.13",
+    "babel-eslint": "^7",
+    "babel-plugin-emotion": "^8.0.4",
+    "babel-plugin-inline-react-svg": "^0.4.0",
+    "babel-plugin-transform-define": "^1.3.0",
+    "babel-preset-es2015": "^6",
+    "bundlesize": "^0.15.3",
+    "codecov": "^3.0.0",
+    "enzyme": "^3.1.0",
+    "enzyme-adapter-react-16": "^1.0.1",
+    "enzyme-to-json": "^3.1.2",
+    "eslint": "^4.7.1",
+    "eslint-config-airbnb": "^15.1.0",
+    "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-jsx-a11y": "^5.1.1",
+    "eslint-plugin-react": "^7.3.0",
+    "jest": "^22.4.2",
+    "jest-glamor-react": "^3.1.2",
+    "nodemon": "^1.11.0",
+    "prettier": "^1.7.0",
+    "prettier-eslint-cli": "^4.3.2",
+    "react-test-renderer": "^16.0.0",
+    "webpack": "3.6.0",
+    "webpack-bundle-analyzer": "^2.8.3"
+  },
+  "engines": {
+    "node": "10.9.x"
+  },
+  "jest": {
+    "collectCoverage": true,
+    "collectCoverageFrom": [
+      "**/*.{js,jsx}",
+      "!**/__tests__/**",
+      "!**/helpers/test/**",
+      "!next.config.js",
+      "!automation/**",
+      "!bin/**",
+      "!jest/**",
+      "!static/**",
+      "!storybook/**",
+      "!tmp/**"
+    ],
+    "coverageReporters": ["json", "lcov", "text-summary"],
+    "setupFiles": [
+      "<rootDir>/jest/setup/polyfill.js",
+      "<rootDir>/jest/setup/test-setup.js"
+    ],
+    "coverageDirectory": "tmp/coverage",
+    "moduleNameMapper": {
+      "autotest/jest": "<rootDir>/lib/helpers/test/jest",
+      "autotest/storybook": "<rootDir>/lib/helpers/test/nop",
+      "\\.(css|gif|jpg|png|svg)$": "<rootDir>/jest/helpers/empty-module.js"
+    },
+    "setupTestFrameworkScriptFile": "<rootDir>/jest/setup.js",
+    "testRegex": "__tests__/.*.test.js$"
+  },
+  "bundlesize": [
+    {
+      "path": ".next/bundles/chunks/deferred-global.js",
+      "maxSize": "30 kB"
+    },
+    {
+      "path": ".next/bundles/chunks/widgets.js",
+      "maxSize": "30 kB"
+    },
+    {
+      "path": ".next/bundles/chunks/!(deferred-global|widgets).js",
+      "maxSize": "10 kB"
+    },
+    {
+      "path": ".next/bundles/pages/!(_document).js",
+      "maxSize": "18 kB"
+    },
+    {
+      "path": ".next/bundles/app.js",
+      "maxSize": "145 kB"
+    }
+  ],
+  "scripts": {
+    "bundle:analyze":
+      "webpack-bundle-analyzer .next/webpack-stats.json .next/bundles",
+    "bundle:size": "bundlesize",
+    "dev": "yarn run process:dev",
+    "jest": "jest",
+    "jest:update": "jest --updateSnapshot",
+    "jest:watch": "jest --watch",
+    "lint": "eslint --cache --ignore-path .gitignore --ext .js --ext .jsx .",
+    "format":
+      "prettier-eslint --ignore \"**/.next/**\" --ignore \"**/tmp/**\" --write \"**/*.{js,jsx}\"",
+    "format:file": "prettier-eslint --write",
+    "next:build": "NODE_ENV=production next build",
+    "process:dev":
+      "NODE_ENV=development nodemon --watch next.config.js --watch config --watch server --ext js,json server/index.js",
+    "process:server": "node server/index.js",
+    "storybook":
+      "BABEL_ENV=storybook start-storybook --config-dir storybook --port 6006",
+    "test": "yarn run lint && yarn run jest"
+  }
+}

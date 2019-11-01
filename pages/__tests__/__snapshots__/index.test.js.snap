@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Page: Data: 500 Error 1`] = `
+<div>
+  It Broke
+</div>
+`;
+
+exports[`Page: Data: Default 1`] = `
+<React.Fragment>
+  <Header />
+  <TwoColumn
+    data-article-body={true}
+  >
+    <Styled(div)>
+      Here are things!
+    </Styled(div)>
+    <Styled(section)>
+      And maybe other things?
+    </Styled(section)>
+  </TwoColumn>
+</React.Fragment>
+`;
+
+exports[`Page: Data: Not Found 1`] = `
+<div>
+  It Broke
+</div>
+`;
